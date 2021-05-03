@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/Base.h
+string
+-
+map
+-
+
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/Directory.h
+string
+-
+unordered_map
+-
+Base.h
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/Base.h
+File.h
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/File.h
+memory
+-
+
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/File.h
+Base.h
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/Base.h
+ctime
+-
+memory
+-
+
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/main.cpp
+iostream
+-
+Directory.h
+/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/Directory.h
+
