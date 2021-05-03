@@ -1,0 +1,53 @@
+Una cosa sull'utilizzo di .h e .cpp. In genere nei punto .h ci va solo l'interfaccia, per evitare che il codice venga compilato n volte, ma ci pensi poi il linker a metterlo assieme. Non è solo una questione di tempo ma anche di dimensione dell'eseguibile: il c++ si usa dove le prestazioni sono cruciali e spesso lo si fa in sistemi limitati, dove è necessario risparmiare anche il singolo byte
+Vedrete più avanti però casi dove questo non è vero. Il più semplice sono le funzioni "inline", queste vengono espanse dal compilatore per evitare una chiamata a funzione, che ha un certo overhead nella gestione dello stack. In questo caso devono essere definite nell .h, perché altrimenti il compilatore non sa che espandere
+Un altro caso che vedrete è la programmazione generica, con i template. Con i template la vostra libreria/modulo non contiene codice, ma sono un template, come dice il nome stesso, che viene espanso con i tipi e l'implementazione corretta solo dove viene usato. Anche in questo caso il compilatore è più efficace se ha l'implementazione nell'header, spesso le lib di template sono direttamente definite in soli .h oggi.
+Quindi il motivo per cui trovate prassi differenti è anche storico e perché ci sono "usi" differenti.
+
+-----------------------------------------------------------------------
+professore, i getter per ottenere le variabili private di una classe possono essere messi nel file h o devono andare anche loro nel cpp?
+
+potresti implementare tutto nel .h, quindi non si obbligato a fare nulla. per generare un codice più leggero in genere mettere le cose nel .cpp come spiegavo nel messaggio sopra.
+di certo i getter sono i primi candidati a diventare "inline" cioè espansi e quindi sì, volendo li puoi mettere nell'header
+(l'importante in questo caso è che uno sappia cosa vuole ottenere)
+
+-----------------------------------------------------------------------
+
+E' sempre necessario rendere esplicito il movimento?
+Message m5 = Message{std::move(m1)};
+
+no, quando compili con i flag di ottimizzazione ci pensa il c++ a farlo. in genere sa quando può invocarlo perché nel grafo di utilizzo vede che non userà mai più quella variabile
+ ti tocca se vuoi debuggarlo: senza flag di ottimizzazione il c++ non lo fa da solo
+ 
+---------------------------------------------------------------------
+
+Nota per tutti
+"int class::get() const"  non è lo stesso di "const int class::get()"
+nel primo caso dico che get non ha effetti sull'oggetto su cui viene invocato, nel secondo invece dico che ritorno un const int (che non ha molto senso ma è solo per fare l'esempio)
+const nel valore di ritorno si usa quando restituisco un reference con &
+ad esempio:
+const Message& MessageStore::get()
+dice al compilatore che il message che ti restituisco lo puoi leggere ma non modificare! se chi ottiene il message prova ad invocare un metodo non const, il compilatore fallisce
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
