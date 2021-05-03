@@ -1,3 +1,0 @@
-/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/luigi/Scrivania/Politecnico/ProgragSistema/API/lab/lab2bis/cmake-build-debug/CMakeFiles/lab2.dir
